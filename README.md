@@ -1,4 +1,4 @@
- 
+
     
     import React, {useState, useEffect} from 'react'
     export default function TrafficLight() {
@@ -6,10 +6,33 @@
      const [color, setColor] = useState("")
      const [count, setCount] = useState(0)
      const [delayTime, setDelayTime] = useState(0)
-   
+    
+     useEffect(()=>{                
+           setTimeout(()=>{    
+              if(count == 0){
+                setColor("red");
+                setDelayTime(3000)            
+              }  
+              if(count == 1){
+                setColor("yellow");
+                 setDelayTime(3000) 
+              }  
+              if(count == 2){
+                setColor("green");
+                 setDelayTime(3000) 
+              } 
+              if(count>2){
+                 setCount(0)
+              } else {
+                setCount(count+1)
+              }
+              
+        }, delayTime)
+     }, [count])
     
     
-      return<div>
+    
+      return <div>
           <div> 
               <div class={color == "red" ? "red" : ""}> Red </div>
               <div class={color == "yellow" ? "yellow" : ""}> Yellow </div>
